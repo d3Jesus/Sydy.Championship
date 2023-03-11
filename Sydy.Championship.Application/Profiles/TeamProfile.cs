@@ -10,6 +10,9 @@ namespace Sydy.Championship.Application.Profiles
         {
             CreateMap<Team, GetTeamViewModel>();
             CreateMap<GetTeamViewModel, Team>();
+
+            CreateMap<Team, AddTeamViewModel>();
+            CreateMap<AddTeamViewModel, Team>();
         }
     }
 }

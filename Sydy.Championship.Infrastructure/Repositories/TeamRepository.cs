@@ -14,6 +14,14 @@ namespace Sydy.Championship.Infrastructure.Repositories
             _context = context;
         }
 
+        public async Task<Team> AddAsync(Team team)
+        {
+            _context.Teams.Add(team);
+            await _context.SaveChangesAsync();
+
+            return team;
+        }
+
         public async Task<IEnumerable<Team>> GetAsync()
         {
             return await _context.Teams.ToListAsync();
