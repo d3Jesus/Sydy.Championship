@@ -21,6 +21,12 @@ namespace Sydy.Championship.API.Controllers
             return Ok(await _service.GetAsync());
         }
 
+        [HttpGet("{id:int}")]
+        public async Task<IActionResult> GetById(int id)
+        {
+            return Ok(await _service.GetByIdAsync(id));
+        }
+
         [HttpPost]
         public async Task<IActionResult> Add(AddTeamViewModel model)
         {

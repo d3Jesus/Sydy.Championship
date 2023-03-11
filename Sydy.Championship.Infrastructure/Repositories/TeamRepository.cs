@@ -26,5 +26,10 @@ namespace Sydy.Championship.Infrastructure.Repositories
         {
             return await _context.Teams.ToListAsync();
         }
+
+        public async Task<Team?> GetByIdAsync(int id)
+        {
+            return await _context.Teams.FindAsync(id);
+        }
     }
 }

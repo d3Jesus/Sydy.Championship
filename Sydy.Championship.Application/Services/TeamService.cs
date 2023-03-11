@@ -50,5 +50,27 @@ namespace Sydy.Championship.Application.Services
             return serviceResponse;
         }
 
+        public async Task<ServiceResponse<GetTeamViewModel>> GetByIdAsync(int id)
+        {
+            var serviceResponse = new ServiceResponse<GetTeamViewModel>();
+
+            if (id < 1)
+            {
+                serviceResponse.Message = "Invalid team Id";
+                return serviceResponse;
+            }
+
+            var result = await _repository.GetByIdAsync(id);
+
+            if (result is null)
+            {
+                serviceResponse.Message = $"Team with ID {id} not found!";
+                serviceResponse.Succeeded = false;
+            }
+
+            serviceResponse.ResponseData = _mapper.Map<GetTeamViewModel>(result);
+
+            return serviceResponse;
+        }
     }
 }
