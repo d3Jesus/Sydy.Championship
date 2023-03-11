@@ -42,5 +42,18 @@ namespace Sydy.Championship.API.Controllers
 
             return Ok(response);
         }
+
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> Delete(int id)
+        {
+            var existingTeam = await _service.GetByIdAsync(id);
+
+            if (existingTeam is null) 
+                return NotFound();
+
+            var response = await _service.DeleteAsync(existingTeam.ResponseData);
+
+            return Ok(response);
+        }
     }
 }

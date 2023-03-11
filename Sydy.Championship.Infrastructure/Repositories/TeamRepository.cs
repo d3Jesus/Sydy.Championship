@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Sydy.Championship.Application.ViewModels;
 using Sydy.Championship.CoreBusiness.Entities;
 using Sydy.Championship.CoreBusiness.Interfaces;
 using Sydy.Championship.Infrastructure.Data;
@@ -22,6 +23,14 @@ namespace Sydy.Championship.Infrastructure.Repositories
             return team;
         }
 
+        public async Task<bool> DeleteAsync(Team team)
+        {
+            _context.Teams.Remove(team);
+            await _context.SaveChangesAsync();
+
+            return true;
+        }
+
         public async Task<IEnumerable<Team>> GetAsync()
         {
             return await _context.Teams.ToListAsync();
@@ -29,7 +38,7 @@ namespace Sydy.Championship.Infrastructure.Repositories
 
         public async Task<Team?> GetByIdAsync(int id)
         {
-            return await _context.Teams.FindAsync(id);
+            return await _context.Teams.Where(t => t.Id == id).AsNoTrackingWithIdentityResolution().FirstOrDefaultAsync();
         }
 
         public async Task<Team> UpdateAsync(Team team)

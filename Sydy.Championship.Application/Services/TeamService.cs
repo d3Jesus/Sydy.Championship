@@ -38,6 +38,34 @@ namespace Sydy.Championship.Application.Services
             return serviceResponse;
         }
 
+        public async Task<ServiceResponse<bool>> DeleteAsync(GetTeamViewModel team)
+        {
+            var serviceResponse = new ServiceResponse<bool>();
+
+            if (team.Id < 1)
+            {
+                serviceResponse.Succeeded = false;
+                serviceResponse.Message = $"Invalid team Id.";
+
+                return serviceResponse;
+            }
+
+            try
+            {
+                var mapper = _mapper.Map<Team>(team);
+                await _repository.DeleteAsync(mapper);
+
+                serviceResponse.Message = "Team deleted successfuly!";
+            }
+            catch (Exception ex)
+            {
+                serviceResponse.Succeeded = false;
+                serviceResponse.Message = ex.Message;
+            }
+
+            return serviceResponse;
+        }
+
         public async Task<ServiceResponse<IEnumerable<GetTeamViewModel>>> GetAsync()
         {
             var result = await _repository.GetAsync();

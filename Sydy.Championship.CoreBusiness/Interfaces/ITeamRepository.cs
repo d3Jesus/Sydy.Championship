@@ -8,5 +8,6 @@ namespace Sydy.Championship.CoreBusiness.Interfaces
         Task<Team> GetByIdAsync(int id);
         Task<Team> AddAsync(Team team);
         Task<Team> UpdateAsync(Team team);
+        Task<bool> DeleteAsync(Team team);
     }
 }
