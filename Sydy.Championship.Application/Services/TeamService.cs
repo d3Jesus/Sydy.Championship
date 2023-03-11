@@ -124,6 +124,27 @@ namespace Sydy.Championship.Application.Services
             return serviceResponse;
         }
 
+        public async Task<QueryStringParameter<GetTeamViewModel>> GetPaginatedAsync(int pageNumber, int itemsPerPage)
+        {
+            var teams = await this.GetAsync();
+
+            var pageCount = Math.Ceiling(teams.ResponseData.Count() / (decimal)itemsPerPage);
+
+            teams.ResponseData = teams.ResponseData.Skip((pageNumber - 1) * itemsPerPage)
+                .Take((int)itemsPerPage)
+                .ToList();
+
+            var response = new QueryStringParameter<GetTeamViewModel>
+            {
+                PageNumber = pageNumber,
+                ItemsPerPage = itemsPerPage,
+                TotalPages = (int)pageCount,
+                Items = teams.ResponseData
+            };
+
+            return response;
+        }
+
         public async Task<ServiceResponse<GetTeamViewModel>> UpdateAsync(GetTeamViewModel team)
         {
             var serviceResponse = new ServiceResponse<GetTeamViewModel>();

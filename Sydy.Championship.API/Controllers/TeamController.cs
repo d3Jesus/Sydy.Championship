@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Sydy.Championship.Application.Interfaces;
+using Sydy.Championship.Application.ViewModels;
 using Sydy.Championship.Application.ViewModels.Teams;
 
 namespace Sydy.Championship.API.Controllers
@@ -19,6 +20,12 @@ namespace Sydy.Championship.API.Controllers
         public async Task<IActionResult> GetAll()
         {
             return Ok(await _service.GetAsync());
+        }
+
+        [HttpGet("{pageNumber}/{itemsPerPage}")]
+        public async Task<IActionResult> GetAll(int pageNumber, int itemsPerPage)
+        {
+            return Ok(await _service.GetPaginatedAsync(pageNumber, itemsPerPage));
         }
 
         [HttpGet("{id:int}")]

@@ -1,5 +1,4 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Sydy.Championship.Application.ViewModels;
 using Sydy.Championship.CoreBusiness.Entities;
 using Sydy.Championship.CoreBusiness.Interfaces;
 using Sydy.Championship.Infrastructure.Data;
