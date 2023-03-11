@@ -30,6 +30,14 @@ namespace Sydy.Championship.API.Controllers
         [HttpPost]
         public async Task<IActionResult> Add(AddTeamViewModel model)
         {
+            var exitingTeam = await _service.GetByNameAsync(model.Name);
+
+            if (exitingTeam.ResponseData is not null)
+            {
+                exitingTeam.Message = $"There is a team with name {model.Name}.";
+                return Ok(exitingTeam);
+            }
+
             var response = await _service.AddAsync(model);
 
             return Ok(response);

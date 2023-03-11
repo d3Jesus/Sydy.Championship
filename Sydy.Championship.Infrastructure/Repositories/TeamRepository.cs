@@ -41,6 +41,11 @@ namespace Sydy.Championship.Infrastructure.Repositories
             return await _context.Teams.Where(t => t.Id == id).AsNoTrackingWithIdentityResolution().FirstOrDefaultAsync();
         }
 
+        public async Task<Team?> GetByNameAsync(string name)
+        {
+            return await _context.Teams.Where(t => t.Name == name).AsNoTrackingWithIdentityResolution().FirstOrDefaultAsync();
+        }
+
         public async Task<Team> UpdateAsync(Team team)
         {
             _context.Teams.Update(team);

@@ -101,6 +101,29 @@ namespace Sydy.Championship.Application.Services
             return serviceResponse;
         }
 
+        public async Task<ServiceResponse<GetTeamViewModel>> GetByNameAsync(string name)
+        {
+            var serviceResponse = new ServiceResponse<GetTeamViewModel>();
+
+            if (string.IsNullOrEmpty(name))
+            {
+                serviceResponse.Message = "Invalid team name";
+                return serviceResponse;
+            }
+
+            var result = await _repository.GetByNameAsync(name);
+
+            if (result is null)
+            {
+                serviceResponse.Message = $"Team with name {name} not found!";
+                serviceResponse.Succeeded = false;
+            }
+
+            serviceResponse.ResponseData = _mapper.Map<GetTeamViewModel>(result);
+
+            return serviceResponse;
+        }
+
         public async Task<ServiceResponse<GetTeamViewModel>> UpdateAsync(GetTeamViewModel team)
         {
             var serviceResponse = new ServiceResponse<GetTeamViewModel>();
