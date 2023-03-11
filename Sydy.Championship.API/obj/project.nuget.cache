@@ -1,0 +1,15 @@
+{
+  "version": 2,
+  "dgSpecHash": "S8e/xrDK1NHH4Z9fUkEfNeY+6RbxiNwR4gERI66YmhtKNFvpF4I3o20sGkSwQTLSgL5t0WYAZL/SnqXT73u89g==",
+  "success": true,
+  "projectFilePath": "C:\\workspace\\Sydy.Championship\\Sydy.Championship.API\\Sydy.Championship.API.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\D3V\\.nuget\\packages\\microsoft.extensions.apidescription.server\\3.0.0\\microsoft.extensions.apidescription.server.3.0.0.nupkg.sha512",
+    "C:\\Users\\D3V\\.nuget\\packages\\microsoft.openapi\\1.2.3\\microsoft.openapi.1.2.3.nupkg.sha512",
+    "C:\\Users\\D3V\\.nuget\\packages\\swashbuckle.aspnetcore\\6.2.3\\swashbuckle.aspnetcore.6.2.3.nupkg.sha512",
+    "C:\\Users\\D3V\\.nuget\\packages\\swashbuckle.aspnetcore.swagger\\6.2.3\\swashbuckle.aspnetcore.swagger.6.2.3.nupkg.sha512",
+    "C:\\Users\\D3V\\.nuget\\packages\\swashbuckle.aspnetcore.swaggergen\\6.2.3\\swashbuckle.aspnetcore.swaggergen.6.2.3.nupkg.sha512",
+    "C:\\Users\\D3V\\.nuget\\packages\\swashbuckle.aspnetcore.swaggerui\\6.2.3\\swashbuckle.aspnetcore.swaggerui.6.2.3.nupkg.sha512"
+  ],
+  "logs": []
+}
