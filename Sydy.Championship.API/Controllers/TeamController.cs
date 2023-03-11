@@ -34,5 +34,13 @@ namespace Sydy.Championship.API.Controllers
 
             return Ok(response);
         }
+
+        [HttpPut]
+        public async Task<IActionResult> Update(GetTeamViewModel model)
+        {
+            var response = await _service.UpdateAsync(model);
+
+            return Ok(response);
+        }
     }
 }

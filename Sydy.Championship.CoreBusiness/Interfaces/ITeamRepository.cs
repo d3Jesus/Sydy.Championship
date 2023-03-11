@@ -7,5 +7,6 @@ namespace Sydy.Championship.CoreBusiness.Interfaces
         Task<IEnumerable<Team>> GetAsync();
         Task<Team> GetByIdAsync(int id);
         Task<Team> AddAsync(Team team);
+        Task<Team> UpdateAsync(Team team);
     }
 }

@@ -31,5 +31,13 @@ namespace Sydy.Championship.Infrastructure.Repositories
         {
             return await _context.Teams.FindAsync(id);
         }
+
+        public async Task<Team> UpdateAsync(Team team)
+        {
+            _context.Teams.Update(team);
+            await _context.SaveChangesAsync();
+
+            return team;
+        }
     }
 }

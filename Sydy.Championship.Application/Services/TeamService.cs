@@ -72,5 +72,26 @@ namespace Sydy.Championship.Application.Services
 
             return serviceResponse;
         }
+
+        public async Task<ServiceResponse<GetTeamViewModel>> UpdateAsync(GetTeamViewModel team)
+        {
+            var serviceResponse = new ServiceResponse<GetTeamViewModel>();
+
+            try
+            {
+                var mappedAuthor = _mapper.Map<Team>(team);
+                var result = await _repository.UpdateAsync(mappedAuthor);
+
+                serviceResponse.ResponseData = _mapper.Map<GetTeamViewModel>(result);
+                serviceResponse.Message = "Team updated!";
+            }
+            catch (Exception ex)
+            {
+                serviceResponse.Succeeded = false;
+                serviceResponse.Message = ex.Message;
+            }
+
+            return serviceResponse;
+        }
     }
 }

@@ -8,5 +8,6 @@ namespace Sydy.Championship.Application.Interfaces
         Task<ServiceResponse<IEnumerable<GetTeamViewModel>>> GetAsync();
         Task<ServiceResponse<GetTeamViewModel>> GetByIdAsync(int id);
         Task<ServiceResponse<GetTeamViewModel>> AddAsync(AddTeamViewModel team);
+        Task<ServiceResponse<GetTeamViewModel>> UpdateAsync(GetTeamViewModel team);
     }
 }
