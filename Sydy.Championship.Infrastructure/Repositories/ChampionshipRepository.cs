@@ -3,6 +3,7 @@ using Sydy.Championship.CoreBusiness.Entities;
 using Sydy.Championship.CoreBusiness.Helpers;
 using Sydy.Championship.CoreBusiness.Interfaces;
 using Sydy.Championship.Infrastructure.Data;
+using System.Linq.Expressions;
 
 namespace Sydy.Championship.Infrastructure.Repositories
 {
@@ -41,7 +42,6 @@ namespace Sydy.Championship.Infrastructure.Repositories
                 #endregion
 
                 await StartChampionship(teams, championshipModel.Id);
-                //await StartChampionship(teams, 3);
 
                 return "Championship created successfuly and starded!";
             }
@@ -51,9 +51,12 @@ namespace Sydy.Championship.Infrastructure.Repositories
             }
         }
 
-        public async Task<IEnumerable<ChampionshipModel>> GetChampionshipAsync()
+        public async Task<IEnumerable<ChampionshipModel>> GetChampionshipAsync(string name = "", int year = 0)
         {
             return await _context.Championships
+                .Where(x => (x.Name == name && x.Year == year) || 
+                        (string.IsNullOrEmpty(name) && x.Year == year) || 
+                        (x.Name.Contains(name) && year == 0))
                 .Include(x => x.Matches)
                 .Select(x => new ChampionshipModel
                 {
@@ -79,7 +82,6 @@ namespace Sydy.Championship.Infrastructure.Repositories
 
             var listOfTeams = teams.ToList();
             var numberOfTeams = listOfTeams.Count;
-            //listOfTeams.RemoveAt(numberOfTeams - 1);
 
             var listOfOpponents = teams.ToList();
 
@@ -187,7 +189,7 @@ namespace Sydy.Championship.Infrastructure.Repositories
             }
         }
 
-        public static void AddToScore(List<Billboard> matchScores, int teamId, int score)
+        private static void AddToScore(List<Billboard> matchScores, int teamId, int score)
         {
             matchScores.Add(new Billboard
             {
@@ -196,9 +198,26 @@ namespace Sydy.Championship.Infrastructure.Repositories
             });
         }
 
-        public static void UpdateScore(List<Billboard> matchScores, int teamId, int score)
+        private static void UpdateScore(List<Billboard> matchScores, int teamId, int score)
         {
             matchScores.Where(sc => sc.TeamId == teamId).ToList().ForEach(sc => sc.Score += score);
         }
+
+        //public async Task<IEnumerable<ChampionshipModel>> GetChampionshipByNameAsync(Expression<Func<ChampionshipModel, bool>> func)
+        //{
+        //    return await _context.Championships
+        //        .Where(func)
+        //        .Include(x => x.Matches)
+        //        .Select(x => new ChampionshipModel
+        //        {
+        //            Name = x.Name,
+        //            Year = x.Year,
+        //            Champion = string.IsNullOrEmpty(x.Champion) ? "NOT AVAILABLE" : x.Champion,
+        //            Vice = string.IsNullOrEmpty(x.Vice) ? "NOT AVAILABLE" : x.Vice,
+        //            ThirdPlace = string.IsNullOrEmpty(x.ThirdPlace) ? "NOT AVAILABLE" : x.ThirdPlace,
+        //            MatchesResult = x.MatchesResult
+        //        })
+        //        .ToListAsync();
+        //}
     }
 }

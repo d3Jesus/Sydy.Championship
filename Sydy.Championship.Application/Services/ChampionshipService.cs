@@ -1,9 +1,11 @@
 ﻿using AutoMapper;
+using AutoMapper.Execution;
 using Sydy.Championship.Application.Interfaces;
 using Sydy.Championship.Application.ViewModels;
 using Sydy.Championship.Application.ViewModels.Championship;
 using Sydy.Championship.CoreBusiness.Entities;
 using Sydy.Championship.CoreBusiness.Interfaces;
+using System.Linq.Expressions;
 
 namespace Sydy.Championship.Application.Services
 {
@@ -26,8 +28,7 @@ namespace Sydy.Championship.Application.Services
                 var mapper = _mapper.Map<ChampionshipModel>(championship);
                 var response = await _repository.AddAsync(mapper);
 
-                serviceResponse.ResponseData = _mapper.Map<string>(response);
-                //serviceResponse.Message = $"Championship with name {championship.Name} added successfully!";
+                serviceResponse.Message = _mapper.Map<string>(response);
             }
             catch (Exception ex)
             {
@@ -38,9 +39,9 @@ namespace Sydy.Championship.Application.Services
             return serviceResponse;
         }
 
-        public async Task<ServiceResponse<IEnumerable<GetChampionshipViewModel>>> GetChampionshipAsync()
+        public async Task<ServiceResponse<IEnumerable<GetChampionshipViewModel>>> GetChampionshipAsync(string name = "", int year = 0)
         {
-            var result = await _repository.GetChampionshipAsync();
+            var result = await _repository.GetChampionshipAsync(name, year);
 
             var serviceResponse = new ServiceResponse<IEnumerable<GetChampionshipViewModel>>()
             {
@@ -49,5 +50,19 @@ namespace Sydy.Championship.Application.Services
 
             return serviceResponse;
         }
+
+        //public async Task<ServiceResponse<IEnumerable<GetChampionshipViewModel>>> GetChampionshipByNameAsync(Expression<Func<GetChampionshipViewModel, bool>> func)
+        //{
+        //    var mapper = _mapper.Map<ChampionshipModel>(func);
+        //    Expression<Func<ChampionshipModel, bool>> model = Expression.Lambda<Func<ChampionshipModel, bool>>(Expression.Equal("",""));
+        //    var result = await _repository.GetChampionshipByNameAsync(model);
+
+        //    var serviceResponse = new ServiceResponse<IEnumerable<GetChampionshipViewModel>>()
+        //    {
+        //        ResponseData = _mapper.Map<IEnumerable<GetChampionshipViewModel>>(result)
+        //    };
+
+        //    return serviceResponse;
+        //}
     }
 }
