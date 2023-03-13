@@ -6,6 +6,6 @@ namespace Sydy.Championship.Application.Interfaces
     public interface IChampionshipService
     {
         Task<ServiceResponse<IEnumerable<GetChampionshipViewModel>>> GetChampionshipAsync();
-        Task<ServiceResponse<AddChampionshipViewModel>> AddAsync(AddChampionshipViewModel championship);
+        Task<ServiceResponse<string>> AddAsync(AddChampionshipViewModel championship);
     }
 }

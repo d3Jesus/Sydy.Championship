@@ -18,21 +18,21 @@ namespace Sydy.Championship.Application.Services
             _repository = repository;
         }
 
-        public async Task<ServiceResponse<AddChampionshipViewModel>> AddAsync(AddChampionshipViewModel championship)
+        public async Task<ServiceResponse<string>> AddAsync(AddChampionshipViewModel championship)
         {
-            var serviceResponse = new ServiceResponse<AddChampionshipViewModel>();
+            var serviceResponse = new ServiceResponse<string>();
             try
             {
                 var mapper = _mapper.Map<ChampionshipModel>(championship);
                 var response = await _repository.AddAsync(mapper);
 
-                serviceResponse.ResponseData = _mapper.Map<AddChampionshipViewModel>(response);
-                serviceResponse.Message = $"Championship with name {championship.Name} added successfully!";
+                serviceResponse.ResponseData = _mapper.Map<string>(response);
+                //serviceResponse.Message = $"Championship with name {championship.Name} added successfully!";
             }
             catch (Exception ex)
             {
                 serviceResponse.Succeeded = false;
-                serviceResponse.Message = ex.Message;
+                serviceResponse.Message = string.Concat("Error: ", ex.Message);
             }
 
             return serviceResponse;

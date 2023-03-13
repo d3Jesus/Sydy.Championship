@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Sydy.Championship.Application.Interfaces;
+using Sydy.Championship.Application.ViewModels.Championship;
 
 namespace Sydy.Championship.API.Controllers
 {
@@ -18,6 +19,12 @@ namespace Sydy.Championship.API.Controllers
         public async Task<IActionResult> Get()
         {
             return Ok(await _service.GetChampionshipAsync());
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Add(AddChampionshipViewModel championship)
+        {
+            return Ok(await _service.AddAsync(championship));
         }
     }
 }

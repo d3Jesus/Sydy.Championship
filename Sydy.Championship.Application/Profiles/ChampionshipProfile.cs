@@ -9,10 +9,10 @@ namespace Sydy.Championship.Application.Profiles
         public ChampionshipProfile()
         {
             //CreateMap<ChampionshipModel, AddChampionshipViewModel>();
-            //CreateMap<AddChampionshipViewModel, ChampionshipModel>();
+            CreateMap<AddChampionshipViewModel, ChampionshipModel>();
 
-            //CreateMap<MatchModel, AddMatchViewModel>();
-            //CreateMap<AddMatchViewModel, MatchModel>();
+            CreateMap<MatchModel, AddMatchViewModel>();
+            CreateMap<AddMatchViewModel, MatchModel>();
 
             CreateMap<ChampionshipModel, GetChampionshipViewModel>();
             CreateMap<GetChampionshipViewModel, ChampionshipModel>();

@@ -55,3 +55,4 @@
 /Sydy.Championship.API/Sydy.Championship.API.csproj.user
 /.editorconfig
 /Sydy.Championship.Infrastructure/Migrations/20230312011544_Create-Championship.cs
+/Sydy.Championship.Infrastructure/Migrations/20230312011544_Create-Championship.Designer.cs
