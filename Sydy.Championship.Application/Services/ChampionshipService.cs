@@ -50,19 +50,5 @@ namespace Sydy.Championship.Application.Services
 
             return serviceResponse;
         }
-
-        //public async Task<ServiceResponse<IEnumerable<GetChampionshipViewModel>>> GetChampionshipByNameAsync(Expression<Func<GetChampionshipViewModel, bool>> func)
-        //{
-        //    var mapper = _mapper.Map<ChampionshipModel>(func);
-        //    Expression<Func<ChampionshipModel, bool>> model = Expression.Lambda<Func<ChampionshipModel, bool>>(Expression.Equal("",""));
-        //    var result = await _repository.GetChampionshipByNameAsync(model);
-
-        //    var serviceResponse = new ServiceResponse<IEnumerable<GetChampionshipViewModel>>()
-        //    {
-        //        ResponseData = _mapper.Map<IEnumerable<GetChampionshipViewModel>>(result)
-        //    };
-
-        //    return serviceResponse;
-        //}
     }
 }
