@@ -53,3 +53,5 @@
 /Sydy.Championship.Infrastructure/Migrations/20230311082154_Init-Team.Designer.cs
 /Sydy.Championship.Infrastructure/Migrations/ChampionshipDbContextModelSnapshot.cs
 /Sydy.Championship.API/Sydy.Championship.API.csproj.user
+/.editorconfig
+/Sydy.Championship.Infrastructure/Migrations/20230312011544_Create-Championship.cs
