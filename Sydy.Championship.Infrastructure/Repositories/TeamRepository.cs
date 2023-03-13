@@ -14,7 +14,7 @@ namespace Sydy.Championship.Infrastructure.Repositories
             _context = context;
         }
 
-        public async Task<Team> AddAsync(Team team)
+        public async Task<TeamModel> AddAsync(TeamModel team)
         {
             _context.Teams.Add(team);
             await _context.SaveChangesAsync();
@@ -22,7 +22,7 @@ namespace Sydy.Championship.Infrastructure.Repositories
             return team;
         }
 
-        public async Task<bool> DeleteAsync(Team team)
+        public async Task<bool> DeleteAsync(TeamModel team)
         {
             _context.Teams.Remove(team);
             await _context.SaveChangesAsync();
@@ -30,22 +30,22 @@ namespace Sydy.Championship.Infrastructure.Repositories
             return true;
         }
 
-        public async Task<IEnumerable<Team>> GetAsync()
+        public async Task<IEnumerable<TeamModel>> GetAsync()
         {
             return await _context.Teams.ToListAsync();
         }
 
-        public async Task<Team?> GetByIdAsync(int id)
+        public async Task<TeamModel?> GetByIdAsync(int id)
         {
             return await _context.Teams.Where(t => t.Id == id).AsNoTrackingWithIdentityResolution().FirstOrDefaultAsync();
         }
 
-        public async Task<Team?> GetByNameAsync(string name)
+        public async Task<TeamModel?> GetByNameAsync(string name)
         {
             return await _context.Teams.Where(t => t.Name == name).AsNoTrackingWithIdentityResolution().FirstOrDefaultAsync();
         }
 
-        public async Task<Team> UpdateAsync(Team team)
+        public async Task<TeamModel> UpdateAsync(TeamModel team)
         {
             _context.Teams.Update(team);
             await _context.SaveChangesAsync();

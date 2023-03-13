@@ -4,11 +4,11 @@ using Sydy.Championship.CoreBusiness.Entities;
 
 namespace Sydy.Championship.Infrastructure.Configuration
 {
-    public class TeamConfiguration : IEntityTypeConfiguration<Team>
+    public class TeamConfiguration : IEntityTypeConfiguration<TeamModel>
     {
-        public void Configure(EntityTypeBuilder<Team> builder)
+        public void Configure(EntityTypeBuilder<TeamModel> builder)
         {
-            builder.ToTable(nameof(Team));
+            builder.ToTable("Team");
             builder.Property(t => t.Id).IsRequired();
             builder.Property(t => t.Name).IsRequired().HasMaxLength(50);
         }

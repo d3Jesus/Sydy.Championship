@@ -3,13 +3,18 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.5.33424.131
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sydy.Championship.API", "Sydy.Championship.API\Sydy.Championship.API.csproj", "{BCB8871B-7E47-488A-BF0C-BB4CE855A580}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sydy.Championship.API", "Sydy.Championship.API\Sydy.Championship.API.csproj", "{BCB8871B-7E47-488A-BF0C-BB4CE855A580}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sydy.Championship.CoreBusiness", "Sydy.Championship.CoreBusiness\Sydy.Championship.CoreBusiness.csproj", "{DB456E16-8948-4BEE-BFC7-6A8FFEA32AFB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sydy.Championship.CoreBusiness", "Sydy.Championship.CoreBusiness\Sydy.Championship.CoreBusiness.csproj", "{DB456E16-8948-4BEE-BFC7-6A8FFEA32AFB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sydy.Championship.Application", "Sydy.Championship.Application\Sydy.Championship.Application.csproj", "{A9B69396-B780-4859-BFD1-22C19FEE4DC8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sydy.Championship.Application", "Sydy.Championship.Application\Sydy.Championship.Application.csproj", "{A9B69396-B780-4859-BFD1-22C19FEE4DC8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sydy.Championship.Infrastructure", "Sydy.Championship.Infrastructure\Sydy.Championship.Infrastructure.csproj", "{BDCA4471-F223-48BC-93AE-80455A91DD7A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sydy.Championship.Infrastructure", "Sydy.Championship.Infrastructure\Sydy.Championship.Infrastructure.csproj", "{BDCA4471-F223-48BC-93AE-80455A91DD7A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{EA51A962-53D7-444B-8231-B1BE6F37367F}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

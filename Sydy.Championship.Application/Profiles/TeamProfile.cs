@@ -8,11 +8,11 @@ namespace Sydy.Championship.Application.Profiles
     {
         public TeamProfile()
         {
-            CreateMap<Team, GetTeamViewModel>();
-            CreateMap<GetTeamViewModel, Team>();
+            CreateMap<TeamModel, GetTeamViewModel>();
+            CreateMap<GetTeamViewModel, TeamModel>();
 
-            CreateMap<Team, AddTeamViewModel>();
-            CreateMap<AddTeamViewModel, Team>();
+            CreateMap<TeamModel, AddTeamViewModel>();
+            CreateMap<AddTeamViewModel, TeamModel>();
         }
     }
 }

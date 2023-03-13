@@ -23,7 +23,7 @@ namespace Sydy.Championship.Application.Services
             var serviceResponse = new ServiceResponse<GetTeamViewModel>();
             try
             {
-                var mapper = _mapper.Map<Team>(team);
+                var mapper = _mapper.Map<TeamModel>(team);
                 var response = await _repository.AddAsync(mapper);
 
                 serviceResponse.ResponseData = _mapper.Map<GetTeamViewModel>(response);
@@ -52,7 +52,7 @@ namespace Sydy.Championship.Application.Services
 
             try
             {
-                var mapper = _mapper.Map<Team>(team);
+                var mapper = _mapper.Map<TeamModel>(team);
                 await _repository.DeleteAsync(mapper);
 
                 serviceResponse.Message = "Team deleted successfuly!";
@@ -151,7 +151,7 @@ namespace Sydy.Championship.Application.Services
 
             try
             {
-                var mappedAuthor = _mapper.Map<Team>(team);
+                var mappedAuthor = _mapper.Map<TeamModel>(team);
                 var result = await _repository.UpdateAsync(mappedAuthor);
 
                 serviceResponse.ResponseData = _mapper.Map<GetTeamViewModel>(result);

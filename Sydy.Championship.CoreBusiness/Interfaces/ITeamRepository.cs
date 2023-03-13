@@ -4,11 +4,11 @@ namespace Sydy.Championship.CoreBusiness.Interfaces
 {
     public interface ITeamRepository
     {
-        Task<IEnumerable<Team>> GetAsync();
-        Task<Team> GetByIdAsync(int id);
-        Task<Team> GetByNameAsync(string name);
-        Task<Team> AddAsync(Team team);
-        Task<Team> UpdateAsync(Team team);
-        Task<bool> DeleteAsync(Team team);
+        Task<IEnumerable<TeamModel>> GetAsync();
+        Task<TeamModel> GetByIdAsync(int id);
+        Task<TeamModel> GetByNameAsync(string name);
+        Task<TeamModel> AddAsync(TeamModel team);
+        Task<TeamModel> UpdateAsync(TeamModel team);
+        Task<bool> DeleteAsync(TeamModel team);
     }
 }

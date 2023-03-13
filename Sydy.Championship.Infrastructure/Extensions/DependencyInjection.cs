@@ -19,6 +19,9 @@ namespace Sydy.Championship.Infrastructure.Extensions
             services.AddScoped<ITeamRepository, TeamRepository>();
             services.AddScoped<ITeamService, TeamService>();
 
+            services.AddScoped<IChampionshipRepository, ChampionshipRepository>();
+            services.AddScoped<IChampionshipService, ChampionshipService>();
+
             return services;
         }
     }
