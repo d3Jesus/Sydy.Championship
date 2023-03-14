@@ -373,6 +373,86 @@ And, the score obteined in each match based on the result:
         "message": ""
     }
     ```
+* GET: /api/Championship/{pageNumber}/{itemsPerPage}
+    - Get registered championships with pagination.
+
+    * RESPONSE
+    ```
+    {
+        "pageNumber": 1,
+        "itemsPerPage": 1,
+        "totalPages": 1,
+        "items": [
+            {
+                "name": "Serie A",
+                "year": 2023,
+                "champion": "Barcelona",
+                "vice": "Juventus",
+                "thirdPlace": "Man City",
+                "matchesResult": [
+                    {
+                        "teams": "Barcelona x Man City",
+                        "results": "7 x 9",
+                        "date": "2023-03-13T16:57:44.0248147"
+                    },
+                    {
+                        "teams": "Barcelona x Man United",
+                        "results": "1 x 0",
+                        "date": "2023-03-13T16:57:44.0883165"
+                    },
+                    {
+                        "teams": "Barcelona x Juventus",
+                        "results": "9 x 8",
+                        "date": "2023-03-13T16:57:44.0936021"
+                    },
+                    {
+                        "teams": "Man City x Man United",
+                        "results": "1 x 3",
+                        "date": "2023-03-13T16:57:44.0978405"
+                    },
+                    {
+                        "teams": "Man City x Juventus",
+                        "results": "0 x 10",
+                        "date": "2023-03-13T16:57:44.1038302"
+                    },
+                    {
+                        "teams": "Man United x Juventus",
+                        "results": "6 x 9",
+                        "date": "2023-03-13T16:57:44.1081344"
+                    }
+                ]
+            }
+        ]
+    }
+    ```
+
+* GET: /api/Championship/{championshipName}/{championshipYear}/{pageNumber}/{itemsPerPage}
+    - Get registered championships by name and year(optional) with pagination.
+
+    * RESPONSE
+    ```
+    {
+        "pageNumber": 1,
+        "itemsPerPage": 1,
+        "totalPages": 6,
+        "items": [
+            {
+                "name": "string",
+                "year": 2023,
+                "champion": "Barcelona",
+                "vice": "Man City",
+                "thirdPlace": "Juventos",
+                "matchesResult": [
+                    {
+                        "teams": "Barcelona x Man City",
+                        "results": "4 x 1",
+                        "date": "2023-03-13T12:31:06.0198795"
+                    }
+                ]
+            }
+        ]
+    }
+    ```
 
 ## How to use
 ### Connection String

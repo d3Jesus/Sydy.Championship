@@ -44,7 +44,13 @@ namespace Sydy.Championship.API.Controllers
         [HttpGet("{pageNumber:int}/{itemsPerPage:int}")]
         public async Task<IActionResult> Get (int pageNumber, int itemsPerPage)
         {
-            return Ok(await _service.GetPaginatedAsync(pageNumber, itemsPerPage));
+            return Ok(await _service.GetPaginatedChampionshipsAsync(pageNumber, itemsPerPage));
+        }
+
+        [HttpGet("{championshipName:alpha}/{championshipYear:int}/{pageNumber:int}/{itemsPerPage:int}")]
+        public async Task<IActionResult> Get (string championshipName, int championshipYear = 0, int pageNumber = 1, int itemsPerPage = 1)
+        {
+            return Ok(await _service.GetPaginatedChampionshipMatchAsync(pageNumber, itemsPerPage, championshipName, championshipYear));
         }
 
         [HttpPost]

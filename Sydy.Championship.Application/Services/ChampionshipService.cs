@@ -50,13 +50,38 @@ namespace Sydy.Championship.Application.Services
             return serviceResponse;
         }
 
-        public async Task<QueryStringParameter<GetChampionshipViewModel>> GetPaginatedAsync (int pageNumber, int itemsPerPage)
+        public async Task<QueryStringParameter<GetChampionshipViewModel>> GetPaginatedChampionshipsAsync (int pageNumber, int itemsPerPage)
         {
             var championship = await this.GetChampionshipAsync();
 
             var pageCount = Math.Ceiling(championship.ResponseData.Count() / (decimal)itemsPerPage);
 
             championship.ResponseData = championship.ResponseData.Skip((pageNumber - 1) * itemsPerPage)
+                .Take((int)itemsPerPage)
+                .ToList();
+
+            var response = new QueryStringParameter<GetChampionshipViewModel>
+            {
+                PageNumber = pageNumber,
+                ItemsPerPage = itemsPerPage,
+                TotalPages = (int)pageCount,
+                Items = championship.ResponseData
+            };
+
+            return response;
+        }
+
+        public async Task<QueryStringParameter<GetChampionshipViewModel>> GetPaginatedChampionshipMatchAsync (int pageNumber, int itemsPerPage, string name = "", int year = 0)
+        {
+            var championship = await this.GetChampionshipAsync(name, year);
+
+            var pageCount = Math.Ceiling(championship.ResponseData.FirstOrDefault().MatchesResult.Count() / (decimal)itemsPerPage);
+
+            championship.ResponseData.FirstOrDefault().MatchesResult = 
+                championship.ResponseData
+                .FirstOrDefault()
+                .MatchesResult
+                .Skip((pageNumber - 1) * itemsPerPage)
                 .Take((int)itemsPerPage)
                 .ToList();
 
