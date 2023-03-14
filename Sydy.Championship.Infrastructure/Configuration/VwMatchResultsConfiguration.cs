@@ -8,7 +8,7 @@ namespace Sydy.Championship.Infrastructure.Configuration
     {
         public void Configure (EntityTypeBuilder<VwMatchResultsModel> builder)
         {
-            builder.ToTable("VwChampionshipResults");
+            builder.ToTable("VwChampionshipResults", x=> x.ExcludeFromMigrations());
             builder.HasKey(x => x.Id);
             builder.Property(c => c.Teams);
             builder.Property(c => c.Results);
