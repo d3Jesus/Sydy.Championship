@@ -41,6 +41,12 @@ namespace Sydy.Championship.API.Controllers
             return Ok(await _service.GetChampionshipAsync(championshipName, championshipYear));
         }
 
+        [HttpGet("{pageNumber:int}/{itemsPerPage:int}")]
+        public async Task<IActionResult> Get (int pageNumber, int itemsPerPage)
+        {
+            return Ok(await _service.GetPaginatedAsync(pageNumber, itemsPerPage));
+        }
+
         [HttpPost]
         public async Task<IActionResult> Add(AddChampionshipViewModel championship)
         {

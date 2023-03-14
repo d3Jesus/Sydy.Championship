@@ -1,11 +1,10 @@
 ﻿using AutoMapper;
-using AutoMapper.Execution;
 using Sydy.Championship.Application.Interfaces;
 using Sydy.Championship.Application.ViewModels;
 using Sydy.Championship.Application.ViewModels.Championship;
+using Sydy.Championship.Application.ViewModels.Teams;
 using Sydy.Championship.CoreBusiness.Entities;
 using Sydy.Championship.CoreBusiness.Interfaces;
-using System.Linq.Expressions;
 
 namespace Sydy.Championship.Application.Services
 {
@@ -49,6 +48,27 @@ namespace Sydy.Championship.Application.Services
             };
 
             return serviceResponse;
+        }
+
+        public async Task<QueryStringParameter<GetChampionshipViewModel>> GetPaginatedAsync (int pageNumber, int itemsPerPage)
+        {
+            var championship = await this.GetChampionshipAsync();
+
+            var pageCount = Math.Ceiling(championship.ResponseData.Count() / (decimal)itemsPerPage);
+
+            championship.ResponseData = championship.ResponseData.Skip((pageNumber - 1) * itemsPerPage)
+                .Take((int)itemsPerPage)
+                .ToList();
+
+            var response = new QueryStringParameter<GetChampionshipViewModel>
+            {
+                PageNumber = pageNumber,
+                ItemsPerPage = itemsPerPage,
+                TotalPages = (int)pageCount,
+                Items = championship.ResponseData
+            };
+
+            return response;
         }
     }
 }
