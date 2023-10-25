@@ -56,3 +56,9 @@
 /.editorconfig
 /Sydy.Championship.Infrastructure/Migrations/20230312011544_Create-Championship.cs
 /Sydy.Championship.Infrastructure/Migrations/20230312011544_Create-Championship.Designer.cs
+/Sydy.Championship.API/obj/Debug/net6.0/Sydy.Championship.API.GeneratedMSBuildEditorConfig.editorconfig
+/Sydy.Championship.Application/obj/Debug/net6.0/Sydy.Championship.Application.GeneratedMSBuildEditorConfig.editorconfig
+/Sydy.Championship.CoreBusiness/obj/Debug/net6.0/Sydy.Championship.CoreBusiness.assets.cache
+/Sydy.Championship.CoreBusiness/obj/Debug/net6.0/Sydy.Championship.CoreBusiness.csproj.AssemblyReference.cache
+/Sydy.Championship.CoreBusiness/obj/Debug/net6.0/Sydy.Championship.CoreBusiness.GeneratedMSBuildEditorConfig.editorconfig
+/Sydy.Championship.Infrastructure/obj/Debug/net6.0/Sydy.Championship.Infrastructure.GeneratedMSBuildEditorConfig.editorconfig
